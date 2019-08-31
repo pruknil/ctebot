@@ -24,7 +24,7 @@ import lombok.extern.slf4j.Slf4j;
 
 @Configuration
 @Slf4j
-public class KitchenSinkWebMvcConfigurer implements WebMvcConfigurer {
+public class CTEBotWebMvcConfigurer implements WebMvcConfigurer {
     @Override
     public void addResourceHandlers(ResourceHandlerRegistry registry) {
 
