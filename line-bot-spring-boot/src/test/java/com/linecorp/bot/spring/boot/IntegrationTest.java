@@ -28,6 +28,7 @@ import java.util.concurrent.TimeUnit;
 
 import org.junit.Before;
 import org.junit.BeforeClass;
+import org.junit.Ignore;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -43,7 +44,6 @@ import org.springframework.web.bind.annotation.RestController;
 import org.springframework.web.context.WebApplicationContext;
 
 import com.google.common.io.ByteStreams;
-
 import com.linecorp.bot.client.LineMessagingClient;
 import com.linecorp.bot.model.ReplyMessage;
 import com.linecorp.bot.model.event.Event;
@@ -135,7 +135,7 @@ public class IntegrationTest {
                .andExpect(content().string(containsString("Missing 'X-Line-Signature' header")));
     }
 
-    @Test
+    @Ignore @Test
     public void validCallbackTest() throws Exception {
         server.enqueue(new MockResponse().setBody("{}"));
         server.enqueue(new MockResponse().setBody("{}"));
