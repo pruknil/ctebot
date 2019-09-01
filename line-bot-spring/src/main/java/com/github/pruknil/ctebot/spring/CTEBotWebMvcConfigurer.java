@@ -29,18 +29,15 @@ public class CTEBotWebMvcConfigurer implements WebMvcConfigurer {
     @Override
     public void addResourceHandlers(ResourceHandlerRegistry registry) {
 
-        String downloadedContentUri = CTEBotApplication.downloadedContentDir
-                .toUri().toASCIIString();
+        String downloadedContentUri = CTEBotApplication.downloadedContentDir.toUri().toASCIIString();
         log.info("downloaded dir: {}", downloadedContentUri);
-        registry.addResourceHandler("/downloaded/**")
-                .addResourceLocations(downloadedContentUri);
-        registry.addResourceHandler("/static/**")
-                .addResourceLocations("classpath:/static/");
+        registry.addResourceHandler("/downloaded/**").addResourceLocations(downloadedContentUri);
+        registry.addResourceHandler("/static/**").addResourceLocations("classpath:/static/");
     }
 
     @Bean
     public CTEFunc autowiredCTEFunc() {
-      CTEFunc obj = new CTEFuncImpl();
+        CTEFunc obj = new CTEFuncImpl();
         return obj;
     }
 }

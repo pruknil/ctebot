@@ -16,7 +16,19 @@
 
 package com.github.pruknil.ctebot.spring;
 
+import java.io.File;
+import java.io.IOException;
+import java.nio.file.Files;
+import java.nio.file.Path;
+import java.nio.file.Paths;
+
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.core.io.Resource;
+import org.springframework.core.io.ResourceLoader;
+
 public class CTEFuncImpl implements CTEFunc {
+    @Autowired
+    private ResourceLoader resourceLoader;
 
     public String reply(String msg) {
         if ("#tdp".equalsIgnoreCase(msg)) {
@@ -32,11 +44,11 @@ public class CTEFuncImpl implements CTEFunc {
             return lab();
         }
 
-        return "";
+        return null;
     }
 
     private String lab() {
-        return "lab()";
+        return readFile("lab");
     }
 
     private String cost() {
@@ -48,6 +60,19 @@ public class CTEFuncImpl implements CTEFunc {
     }
 
     private String tdp() {
-        return "doTDP()";
+        return readFile("tdp");
+    }
+
+    private String readFile(String filename) {
+        Resource resource = resourceLoader.getResource("classpath:" + filename + ".txt");
+        try {
+            File f = resource.getFile();
+            Path path = Paths.get(f.toURI());
+            byte[] fileBytes = Files.readAllBytes(path);
+            return new String(fileBytes, "UTF-8");
+        } catch (IOException e) {
+            e.printStackTrace();
+            return null;
+        }
     }
 }
