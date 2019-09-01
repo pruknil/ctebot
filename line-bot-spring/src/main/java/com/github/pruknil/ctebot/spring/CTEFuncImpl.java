@@ -64,7 +64,7 @@ public class CTEFuncImpl implements CTEFunc {
     }
 
     private String readFile(String filename) {
-        Resource resource = resourceLoader.getResource("classpath:" + filename + ".txt");
+        Resource resource = resourceLoader.getResource("classpath:/static/" + filename + ".txt");
         try {
             File f = resource.getFile();
             Path path = Paths.get(f.toURI());
