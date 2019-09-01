@@ -260,14 +260,9 @@ public class CTEBotController {
         String text = content.getText();
 
         log.info("Got text message from replyToken:{}: text:{}", replyToken, text);
-        log.info("uri {}", createUri("/static/batchple.jpg"));
-        DownloadedContent jpg = new DownloadedContent(null, createUri("/static/batchple.jpg"));
-        DownloadedContent previewImg = new DownloadedContent(null, createUri("/static/batchple.jpg"));
-        log.info("img {}: {}", previewImg.getUri(), jpg.getUri());
         if ("#batchple".equalsIgnoreCase(text)) {
             handleHeavyContent(replyToken, event.getMessage().getId(), responseBody -> {
-
-                reply(event.getReplyToken(), new ImageMessage(jpg.getUri(), previewImg.getUri()));
+                reply(event.getReplyToken(), new ImageMessage(createUri("/static/batchple.jpg"), createUri("/static/batchple.jpg")));
             });
         } else {
             this.replyText(replyToken, cteFunc.reply(text));
