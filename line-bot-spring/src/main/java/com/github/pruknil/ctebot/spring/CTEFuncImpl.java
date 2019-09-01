@@ -42,7 +42,7 @@ public class CTEFuncImpl implements CTEFunc {
         }
         if (msg.startsWith("#cost")) {
             List<String> resultList = Splitter.on(' ').trimResults().omitEmptyStrings().splitToList(msg);
-            if (resultList.isEmpty() || resultList.size() > 1) {
+            if (resultList.isEmpty() || resultList.size() > 2) {
                 return "Please specified valid appid";
             }
 
