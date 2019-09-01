@@ -20,11 +20,14 @@ import java.io.BufferedReader;
 import java.io.IOException;
 import java.io.InputStream;
 import java.io.InputStreamReader;
+import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.core.io.Resource;
 import org.springframework.core.io.ResourceLoader;
 import org.springframework.web.servlet.support.ServletUriComponentsBuilder;
+
+import com.google.common.base.Splitter;
 
 public class CTEFuncImpl implements CTEFunc {
     @Autowired
@@ -38,7 +41,12 @@ public class CTEFuncImpl implements CTEFunc {
             return batchple();
         }
         if (msg.startsWith("#cost")) {
-            return cost();
+            List<String> resultList = Splitter.on(' ').trimResults().omitEmptyStrings().splitToList(msg);
+            if (resultList.isEmpty() || resultList.size() > 1) {
+                return "Please specified valid appid";
+            }
+
+            return cost(resultList.get(1));
         }
         if ("#lab".equalsIgnoreCase(msg)) {
             return lab();
@@ -51,8 +59,12 @@ public class CTEFuncImpl implements CTEFunc {
         return readFile("lab");
     }
 
-    private String cost() {
-        return "cost()";
+    private String cost(String appid) {
+        String val = readFile("cost_" + appid);
+        if (val != null) {
+            return val;
+        }
+        return "invalid appid";
     }
 
     private String batchple() {
