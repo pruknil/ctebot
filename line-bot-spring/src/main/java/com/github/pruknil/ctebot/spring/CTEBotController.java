@@ -263,7 +263,7 @@ public class CTEBotController {
     log.info("Returns echo message {}: {}", replyToken, text);
     this.replyText(
             replyToken,
-            cteFunc.reply()
+            cteFunc.reply(text)
     );
   }
 

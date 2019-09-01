@@ -18,8 +18,8 @@ package com.github.pruknil.ctebot.spring;
 
 public class CTEFuncImpl implements CTEFunc {
 
-  public String reply() {
-    return "";
+  public String reply(String msg) {
+    return msg;
   }
 
 }

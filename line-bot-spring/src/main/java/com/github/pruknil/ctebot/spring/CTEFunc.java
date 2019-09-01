@@ -17,5 +17,5 @@
 package com.github.pruknil.ctebot.spring;
 
 public interface CTEFunc {
-  String reply();
+  String reply(String msg);
 }
