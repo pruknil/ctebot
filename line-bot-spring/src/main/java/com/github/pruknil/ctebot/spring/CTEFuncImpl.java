@@ -16,12 +16,13 @@
 
 package com.github.pruknil.ctebot.spring;
 
+import java.io.BufferedReader;
 import java.io.IOException;
-import java.nio.file.Files;
-import java.nio.file.Path;
-import java.nio.file.Paths;
+import java.io.InputStream;
+import java.io.InputStreamReader;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.core.io.Resource;
 import org.springframework.core.io.ResourceLoader;
 import org.springframework.web.servlet.support.ServletUriComponentsBuilder;
 
@@ -64,9 +65,22 @@ public class CTEFuncImpl implements CTEFunc {
 
     private String readFile(String filename) {
         try {
-            Path path = Paths.get(createUri("/static/" + filename + ".txt"));
-            byte[] fileBytes = Files.readAllBytes(path);
-            return new String(fileBytes, "UTF-8");
+            Resource res = resourceLoader.getResource("url:" + createUri("/static/" + filename + ".txt"));
+            InputStream inputStream = res.getInputStream();
+            InputStreamReader inputStreamReader = new InputStreamReader(inputStream, "UTF-8");
+
+            BufferedReader bufferReader = new BufferedReader(inputStreamReader);
+
+            StringBuilder sb = new StringBuilder();
+            String s;
+            while ((s = bufferReader.readLine()) != null) {
+                sb.append(s);
+            }
+
+            bufferReader.close();
+            inputStream.close();
+
+            return sb.toString();
         } catch (IOException e) {
             e.printStackTrace();
             return null;
