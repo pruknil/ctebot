@@ -18,8 +18,36 @@ package com.github.pruknil.ctebot.spring;
 
 public class CTEFuncImpl implements CTEFunc {
 
-  public String reply(String msg) {
-    return msg;
-  }
+    public String reply(String msg) {
+        if ("#tdp".equalsIgnoreCase(msg)) {
+            return tdp();
+        }
+        if ("#batchple".equalsIgnoreCase(msg)) {
+            return batchple();
+        }
+        if (msg.startsWith("#cost")) {
+            return cost();
+        }
+        if ("#lab".equalsIgnoreCase(msg)) {
+            return lab();
+        }
 
+        return "";
+    }
+
+    private String lab() {
+        return "lab()";
+    }
+
+    private String cost() {
+        return "cost()";
+    }
+
+    private String batchple() {
+        return "batchple()";
+    }
+
+    private String tdp() {
+        return "doTDP()";
+    }
 }
