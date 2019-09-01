@@ -267,6 +267,7 @@ public class CTEBotController {
             handleHeavyContent(replyToken, event.getMessage().getId(), responseBody -> {
                 DownloadedContent jpg = new DownloadedContent(null, createUri("/static/batchple.jpg"));
                 DownloadedContent previewImg = new DownloadedContent(null, createUri("/static/batchple.jpg"));
+                log.info("img {}: {}", previewImg.getUri(), jpg.getUri());
                 reply(event.getReplyToken(), new ImageMessage(jpg.getUri(), previewImg.getUri()));
             });
         } else {
