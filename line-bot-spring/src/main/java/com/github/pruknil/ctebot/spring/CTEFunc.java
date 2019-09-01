@@ -1,10 +1,3 @@
-include 'line-bot-api-client'
-include 'line-bot-model'
-include 'line-bot-servlet'
-include 'line-bot-spring-boot'
-include 'line-bot-cli'
-include 'test-boot1-compatibility'
-
 /*
  * Copyright 2016 LINE Corporation
  *
@@ -21,5 +14,8 @@ include 'test-boot1-compatibility'
  * under the License.
  */
 
-// samples
-include 'line-bot-spring'
+package com.github.pruknil.ctebot.spring;
+
+public interface CTEFunc {
+  String reply();
+}

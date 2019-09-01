@@ -37,6 +37,7 @@ import com.google.common.io.ByteStreams;
 
 import com.linecorp.bot.client.LineMessagingClient;
 import com.linecorp.bot.client.MessageContentResponse;
+import com.linecorp.bot.model.PushMessage;
 import com.linecorp.bot.model.ReplyMessage;
 import com.linecorp.bot.model.event.BeaconEvent;
 import com.linecorp.bot.model.event.Event;
@@ -76,6 +77,9 @@ import lombok.extern.slf4j.Slf4j;
 public class CTEBotController {
   @Autowired
   private LineMessagingClient lineMessagingClient;
+
+  @Autowired
+  private CTEFunc cteFunc;
 
   @EventMapping
   public void handleTextMessageEvent(MessageEvent<TextMessageContent> event) throws Exception {
@@ -215,6 +219,16 @@ public class CTEBotController {
     }
   }
 
+  private void push(@NonNull String replyToken, @NonNull List<Message> messages) {
+    try {
+      BotApiResponse apiResponse = lineMessagingClient
+          .pushMessage(new PushMessage(replyToken, messages)).get();
+      log.info("Sent messages: {}", apiResponse);
+    } catch (InterruptedException | ExecutionException e) {
+      throw new RuntimeException(e);
+    }
+  }
+
   private void replyText(@NonNull String replyToken, @NonNull String message) {
     if (replyToken.isEmpty()) {
       throw new IllegalArgumentException("replyToken must not be empty");
@@ -245,21 +259,12 @@ public class CTEBotController {
     String text = content.getText();
 
     log.info("Got text message from replyToken:{}: text:{}", replyToken, text);
-    switch (text) {
-    case "#": {
-      log.info("Invoking 'profile' command: source:{}", event.getSource());
 
-      break;
-    }
-
-    default:
-      /* log.info("Returns echo message {}: {}", replyToken, text);
-                this.replyText(
-                        replyToken,
-                        "xxxx"
-                );*/
-      break;
-    }
+    log.info("Returns echo message {}: {}", replyToken, text);
+    this.replyText(
+            replyToken,
+            cteFunc.reply()
+    );
   }
 
   private static String createUri(String path) {

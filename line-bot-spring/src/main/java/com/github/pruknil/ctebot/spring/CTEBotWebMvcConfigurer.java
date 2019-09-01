@@ -16,6 +16,7 @@
 
 package com.github.pruknil.ctebot.spring;
 
+import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.web.servlet.config.annotation.ResourceHandlerRegistry;
 import org.springframework.web.servlet.config.annotation.WebMvcConfigurer;
@@ -35,5 +36,11 @@ public class CTEBotWebMvcConfigurer implements WebMvcConfigurer {
                 .addResourceLocations(downloadedContentUri);
         registry.addResourceHandler("/static/**")
                 .addResourceLocations("classpath:/static/");
+    }
+
+    @Bean
+    public CTEFunc autowiredCTEFunc() {
+      CTEFunc obj = new CTEFuncImpl();
+        return obj;
     }
 }
