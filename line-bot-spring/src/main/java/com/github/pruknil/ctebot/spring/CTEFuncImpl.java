@@ -37,9 +37,6 @@ public class CTEFuncImpl implements CTEFunc {
         if ("#tdp".equalsIgnoreCase(msg)) {
             return tdp();
         }
-        if ("#batchple".equalsIgnoreCase(msg)) {
-            return batchple();
-        }
         if (msg.startsWith("#cost")) {
             List<String> resultList = Splitter.on(' ').trimResults().omitEmptyStrings().splitToList(msg);
             if (resultList.isEmpty() || resultList.size() > 2) {
@@ -65,10 +62,6 @@ public class CTEFuncImpl implements CTEFunc {
             return val;
         }
         return "invalid appid";
-    }
-
-    private String batchple() {
-        return "batchple()";
     }
 
     private String tdp() {
