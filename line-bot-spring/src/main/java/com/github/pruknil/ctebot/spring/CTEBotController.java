@@ -89,73 +89,58 @@ public class CTEBotController {
 
     @EventMapping
     public void handleStickerMessageEvent(MessageEvent<StickerMessageContent> event) {
-       // handleSticker(event.getReplyToken(), event.getMessage());
+        // handleSticker(event.getReplyToken(), event.getMessage());
     }
 
     @EventMapping
     public void handleLocationMessageEvent(MessageEvent<LocationMessageContent> event) {
-		/*
-		 * LocationMessageContent locationMessage = event.getMessage();
-		 * reply(event.getReplyToken(), new LocationMessage(locationMessage.getTitle(),
-		 * locationMessage.getAddress(), locationMessage.getLatitude(),
-		 * locationMessage.getLongitude()));
-		 */
+        LocationMessageContent locationMessage = event.getMessage();
+        reply(event.getReplyToken(), new LocationMessage(locationMessage.getTitle(),
+                locationMessage.getAddress(), locationMessage.getLatitude(), locationMessage.getLongitude()));
     }
 
     @EventMapping
     public void handleImageMessageEvent(MessageEvent<ImageMessageContent> event) throws IOException {
         // You need to install ImageMagick
-		/*
-		 * handleHeavyContent(event.getReplyToken(), event.getMessage().getId(),
-		 * responseBody -> { final ContentProvider provider =
-		 * event.getMessage().getContentProvider(); final DownloadedContent jpg; final
-		 * DownloadedContent previewImg; if (provider.isExternal()) { jpg = new
-		 * DownloadedContent(null, provider.getOriginalContentUrl()); previewImg = new
-		 * DownloadedContent(null, provider.getPreviewImageUrl()); } else { jpg =
-		 * saveContent("jpg", responseBody); previewImg = createTempFile("jpg");
-		 * system("convert", "-resize", "240x", jpg.path.toString(),
-		 * previewImg.path.toString()); } reply(event.getReplyToken(), new
-		 * ImageMessage(jpg.getUri(), previewImg.getUri())); });
-		 */
     }
 
     @EventMapping
     public void handleAudioMessageEvent(MessageEvent<AudioMessageContent> event) throws IOException {
-		/*
-		 * handleHeavyContent(event.getReplyToken(), event.getMessage().getId(),
-		 * responseBody -> { final ContentProvider provider =
-		 * event.getMessage().getContentProvider(); final DownloadedContent mp4; if
-		 * (provider.isExternal()) { mp4 = new DownloadedContent(null,
-		 * provider.getOriginalContentUrl()); } else { mp4 = saveContent("mp4",
-		 * responseBody); } reply(event.getReplyToken(), new AudioMessage(mp4.getUri(),
-		 * 100)); });
-		 */
+        handleHeavyContent(event.getReplyToken(), event.getMessage().getId(), responseBody -> {
+            final ContentProvider provider = event.getMessage().getContentProvider();
+            final DownloadedContent mp4;
+            if (provider.isExternal()) {
+                mp4 = new DownloadedContent(null, provider.getOriginalContentUrl());
+            } else {
+                mp4 = saveContent("mp4", responseBody);
+            }
+            reply(event.getReplyToken(), new AudioMessage(mp4.getUri(), 100));
+        });
     }
 
     @EventMapping
     public void handleVideoMessageEvent(MessageEvent<VideoMessageContent> event) throws IOException {
         // You need to install ffmpeg and ImageMagick.
-		/*
-		 * handleHeavyContent(event.getReplyToken(), event.getMessage().getId(),
-		 * responseBody -> { final ContentProvider provider =
-		 * event.getMessage().getContentProvider(); final DownloadedContent mp4; final
-		 * DownloadedContent previewImg; if (provider.isExternal()) { mp4 = new
-		 * DownloadedContent(null, provider.getOriginalContentUrl()); previewImg = new
-		 * DownloadedContent(null, provider.getPreviewImageUrl()); } else { mp4 =
-		 * saveContent("mp4", responseBody); previewImg = createTempFile("jpg");
-		 * system("convert", mp4.path + "[0]", previewImg.path.toString()); }
-		 * reply(event.getReplyToken(), new VideoMessage(mp4.getUri(), previewImg.uri));
-		 * });
-		 */
+        handleHeavyContent(event.getReplyToken(), event.getMessage().getId(), responseBody -> {
+            final ContentProvider provider = event.getMessage().getContentProvider();
+            final DownloadedContent mp4;
+            final DownloadedContent previewImg;
+            if (provider.isExternal()) {
+                mp4 = new DownloadedContent(null, provider.getOriginalContentUrl());
+                previewImg = new DownloadedContent(null, provider.getPreviewImageUrl());
+            } else {
+                mp4 = saveContent("mp4", responseBody);
+                previewImg = createTempFile("jpg");
+                system("convert", mp4.path + "[0]", previewImg.path.toString());
+            }
+            reply(event.getReplyToken(), new VideoMessage(mp4.getUri(), previewImg.uri));
+        });
     }
 
     @EventMapping
     public void handleFileMessageEvent(MessageEvent<FileMessageContent> event) {
-		/*
-		 * this.reply(event.getReplyToken(), new
-		 * TextMessage(String.format("Received '%s'(%d bytes)",
-		 * event.getMessage().getFileName(), event.getMessage().getFileSize())));
-		 */
+        this.reply(event.getReplyToken(), new TextMessage(String.format("Received '%s'(%d bytes)",
+                event.getMessage().getFileName(), event.getMessage().getFileSize())));
     }
 
     @EventMapping
@@ -165,18 +150,14 @@ public class CTEBotController {
 
     @EventMapping
     public void handleFollowEvent(FollowEvent event) {
-		/*
-		 * String replyToken = event.getReplyToken(); this.replyText(replyToken,
-		 * "Got followed event");
-		 */
+        String replyToken = event.getReplyToken();
+        this.replyText(replyToken, "Got followed event");
     }
 
     @EventMapping
     public void handleJoinEvent(JoinEvent event) {
-		/*
-		 * String replyToken = event.getReplyToken(); this.replyText(replyToken,
-		 * "Joined " + event.getSource());
-		 */
+        String replyToken = event.getReplyToken();
+        this.replyText(replyToken, "Joined " + event.getSource());
     }
 
     @EventMapping
@@ -188,19 +169,15 @@ public class CTEBotController {
 
     @EventMapping
     public void handleBeaconEvent(BeaconEvent event) {
-		/*
-		 * String replyToken = event.getReplyToken(); this.replyText(replyToken,
-		 * "Got beacon message " + event.getBeacon().getHwid());
-		 */
+        String replyToken = event.getReplyToken();
+        this.replyText(replyToken, "Got beacon message " + event.getBeacon().getHwid());
     }
 
     @EventMapping
     public void handleMemberJoined(MemberJoinedEvent event) {
-		/*
-		 * String replyToken = event.getReplyToken(); this.replyText(replyToken,
-		 * "Got memberJoined message " + event.getJoined().getMembers().stream()
-		 * .map(Source::getUserId).collect(Collectors.joining(",")));
-		 */
+        String replyToken = event.getReplyToken();
+        this.replyText(replyToken, "Got memberJoined message " + event.getJoined().getMembers().stream()
+                .map(Source::getUserId).collect(Collectors.joining(",")));
     }
 
     @EventMapping
@@ -261,7 +238,7 @@ public class CTEBotController {
     }
 
     private void handleSticker(String replyToken, StickerMessageContent content) {
-        //reply(replyToken, new StickerMessage(content.getPackageId(), content.getStickerId()));
+        reply(replyToken, new StickerMessage(content.getPackageId(), content.getStickerId()));
     }
 
     private void handleTextContent(String replyToken, MessageEvent<TextMessageContent> event,
