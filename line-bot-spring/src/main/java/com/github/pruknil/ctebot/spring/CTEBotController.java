@@ -89,7 +89,7 @@ public class CTEBotController {
 
     @EventMapping
     public void handleStickerMessageEvent(MessageEvent<StickerMessageContent> event) {
-        handleSticker(event.getReplyToken(), event.getMessage());
+        // handleSticker(event.getReplyToken(), event.getMessage());
     }
 
     @EventMapping
@@ -102,6 +102,7 @@ public class CTEBotController {
     @EventMapping
     public void handleImageMessageEvent(MessageEvent<ImageMessageContent> event) throws IOException {
         // You need to install ImageMagick
+        /*
         handleHeavyContent(event.getReplyToken(), event.getMessage().getId(), responseBody -> {
             final ContentProvider provider = event.getMessage().getContentProvider();
             final DownloadedContent jpg;
@@ -115,7 +116,7 @@ public class CTEBotController {
                 system("convert", "-resize", "240x", jpg.path.toString(), previewImg.path.toString());
             }
             reply(event.getReplyToken(), new ImageMessage(jpg.getUri(), previewImg.getUri()));
-        });
+        });*/
     }
 
     @EventMapping
