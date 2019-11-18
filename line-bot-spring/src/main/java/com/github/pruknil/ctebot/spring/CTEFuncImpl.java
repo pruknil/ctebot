@@ -80,6 +80,7 @@ public class CTEFuncImpl implements CTEFunc {
             String s;
             while ((s = bufferReader.readLine()) != null) {
                 sb.append(s);
+                sb.append("\n");
             }
 
             bufferReader.close();
