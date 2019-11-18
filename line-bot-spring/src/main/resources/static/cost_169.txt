@@ -1,5 +1,5 @@
 Transact CC&CL
 ======================
-CTE1 : 8184.0 THB
+CTE1 : 8,184.00 THB
 ======================
-Summary 8184.0 THB
+Summary 8,184.00 THB

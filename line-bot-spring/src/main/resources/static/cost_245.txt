@@ -1,5 +1,5 @@
 Trade Navigator
 ======================
-CTE1 : 69098.56 THB
+CTE1 : 69,098.56 THB
 ======================
-Summary 69098.56 THB
+Summary 69,098.56 THB

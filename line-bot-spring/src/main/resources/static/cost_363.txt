@@ -1,6 +1,6 @@
 CMAS Corporate
 ======================
-CTE1 : 39743.04 THB
-CTE2 : 82232.0 THB
+CTE1 : 39,743.04 THB
+CTE2 : 82,232.00 THB
 ======================
-Summary 121975.04000000001 THB
+Summary 121,975.04 THB

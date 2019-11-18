@@ -1,5 +1,5 @@
 TF_MIS&Report
 ======================
-CTE1 : 23564.0 THB
+CTE1 : 23,564.00 THB
 ======================
-Summary 23564.0 THB
+Summary 23,564.00 THB

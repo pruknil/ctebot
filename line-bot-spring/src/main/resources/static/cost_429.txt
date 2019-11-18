@@ -1,5 +1,5 @@
 RightFax Server
 ======================
-CTE1 : 3400.0 THB
+CTE1 : 3,400.00 THB
 ======================
-Summary 3400.0 THB
+Summary 3,400.00 THB

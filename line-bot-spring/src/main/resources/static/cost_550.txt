@@ -1,5 +1,5 @@
 MakePDF2eMail
 ======================
-CTE1 : 6864.0 THB
+CTE1 : 6,864.00 THB
 ======================
-Summary 6864.0 THB
+Summary 6,864.00 THB

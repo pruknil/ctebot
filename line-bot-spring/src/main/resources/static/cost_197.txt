@@ -1,7 +1,7 @@
 EDCM-ODD
 ======================
-CTE1 : 32680.0 THB
-CTE2 : 45311.6 THB
-CTE3 : 32840.0 THB
+CTE1 : 32,680.00 THB
+CTE2 : 45,311.60 THB
+CTE3 : 32,840.00 THB
 ======================
-Summary 110831.6 THB
+Summary 110,831.60 THB

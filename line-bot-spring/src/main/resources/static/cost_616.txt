@@ -1,7 +1,7 @@
 ARMT
 ======================
-CTE1 : 6960.0 THB
-CTE2 : 7544.0 THB
-CTE3 : 6788.0 THB
+CTE1 : 6,960.00 THB
+CTE2 : 7,544.00 THB
+CTE3 : 6,788.00 THB
 ======================
-Summary 21292.0 THB
+Summary 21,292.00 THB

@@ -1,7 +1,7 @@
 CCoA
 ======================
-CTE1 : 2344.0 THB
-CTE2 : 2344.0 THB
-CTE3 : 2344.0 THB
+CTE1 : 2,344.00 THB
+CTE2 : 2,344.00 THB
+CTE3 : 2,344.00 THB
 ======================
-Summary 7032.0 THB
+Summary 7,032.00 THB

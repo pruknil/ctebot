@@ -1,6 +1,6 @@
 HRMIS CRC
 ======================
-CTE1 : 58048.0 THB
-CTE2 : 67648.0 THB
+CTE1 : 58,048.00 THB
+CTE2 : 67,648.00 THB
 ======================
-Summary 125696.0 THB
+Summary 125,696.00 THB

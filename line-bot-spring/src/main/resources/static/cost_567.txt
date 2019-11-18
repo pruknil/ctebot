@@ -1,5 +1,5 @@
 Private Wealth Management
 ======================
-CTE1 : 11892.0 THB
+CTE1 : 11,892.00 THB
 ======================
-Summary 11892.0 THB
+Summary 11,892.00 THB

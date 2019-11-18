@@ -1,5 +1,5 @@
 K-Payment Gateway
 ======================
-CTE2 : 37008.0 THB
+CTE2 : 37,008.00 THB
 ======================
-Summary 37008.0 THB
+Summary 37,008.00 THB

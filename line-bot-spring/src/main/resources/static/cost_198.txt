@@ -1,7 +1,7 @@
 EDCM-eBPP
 ======================
-CTE1 : 31320.0 THB
-CTE2 : 44991.6 THB
-CTE3 : 27520.0 THB
+CTE1 : 31,320.00 THB
+CTE2 : 44,991.60 THB
+CTE3 : 27,520.00 THB
 ======================
-Summary 103831.6 THB
+Summary 103,831.60 THB

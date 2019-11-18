@@ -1,7 +1,7 @@
 LMS Rpt Mgn
 ======================
-CTE1 : 43850.88 THB
-CTE2 : 40090.24 THB
-CTE3 : 39885.44 THB
+CTE1 : 43,850.88 THB
+CTE2 : 40,090.24 THB
+CTE3 : 39,885.44 THB
 ======================
-Summary 123826.56 THB
+Summary 123,826.56 THB
