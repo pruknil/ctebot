@@ -121,7 +121,7 @@ public class CTEBotController {
 
     @EventMapping
     public void handleAudioMessageEvent(MessageEvent<AudioMessageContent> event) throws IOException {
-    	/*handleHeavyContent(event.getReplyToken(), event.getMessage().getId(), responseBody -> {
+        handleHeavyContent(event.getReplyToken(), event.getMessage().getId(), responseBody -> {
             final ContentProvider provider = event.getMessage().getContentProvider();
             final DownloadedContent mp4;
             if (provider.isExternal()) {
@@ -130,13 +130,13 @@ public class CTEBotController {
                 mp4 = saveContent("mp4", responseBody);
             }
             reply(event.getReplyToken(), new AudioMessage(mp4.getUri(), 100));
-        });*/
+        });
     }
 
     @EventMapping
     public void handleVideoMessageEvent(MessageEvent<VideoMessageContent> event) throws IOException {
         // You need to install ffmpeg and ImageMagick.
-    	/*handleHeavyContent(event.getReplyToken(), event.getMessage().getId(), responseBody -> {
+        handleHeavyContent(event.getReplyToken(), event.getMessage().getId(), responseBody -> {
             final ContentProvider provider = event.getMessage().getContentProvider();
             final DownloadedContent mp4;
             final DownloadedContent previewImg;
@@ -149,13 +149,13 @@ public class CTEBotController {
                 system("convert", mp4.path + "[0]", previewImg.path.toString());
             }
             reply(event.getReplyToken(), new VideoMessage(mp4.getUri(), previewImg.uri));
-        });*/
+        });
     }
 
     @EventMapping
     public void handleFileMessageEvent(MessageEvent<FileMessageContent> event) {
-    	/*this.reply(event.getReplyToken(), new TextMessage(String.format("Received '%s'(%d bytes)",
-                event.getMessage().getFileName(), event.getMessage().getFileSize())));*/
+        this.reply(event.getReplyToken(), new TextMessage(String.format("Received '%s'(%d bytes)",
+                event.getMessage().getFileName(), event.getMessage().getFileSize())));
     }
 
     @EventMapping
@@ -172,7 +172,7 @@ public class CTEBotController {
     @EventMapping
     public void handleJoinEvent(JoinEvent event) {
         String replyToken = event.getReplyToken();
-        //this.replyText(replyToken, "Joined " + event.getSource());
+        this.replyText(replyToken, "Joined " + event.getSource());
     }
 
     @EventMapping
