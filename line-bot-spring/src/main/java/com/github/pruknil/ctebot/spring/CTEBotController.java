@@ -33,6 +33,7 @@ import java.util.stream.Collectors;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.servlet.support.ServletUriComponentsBuilder;
 
+import com.google.common.base.Splitter;
 import com.google.common.io.ByteStreams;
 
 import com.linecorp.bot.client.LineMessagingClient;
@@ -261,9 +262,17 @@ public class CTEBotController {
         String text = content.getText();
 
         log.info("Got text message from replyToken:{}: text:{}", replyToken, text);
-        if ("#batchple".equalsIgnoreCase(text)) {
+        if ("#batchplan".equalsIgnoreCase(text)) {
             reply(event.getReplyToken(),
-                    new ImageMessage(createUri("/static/batchple.jpg"), createUri("/static/batchple.jpg")));
+                    new ImageMessage(createUri("/static/batchplan.jpg"), createUri("/static/batchplan.jpg")));
+        } else if (text.startsWith("#lab")) {
+            List<String> resultList = Splitter.on(' ').trimResults().omitEmptyStrings().splitToList(text);
+            if (resultList.isEmpty() || resultList.size() > 2) {
+                this.replyText(replyToken, "Please specified 1,2,3");
+            }
+            String fname = "lab_"+resultList.get(1).trim();
+            reply(event.getReplyToken(),
+                    new ImageMessage(createUri("/static/" + fname + ".jpg"), createUri("/static/" + fname + ".jpg")));
         } else {
             this.replyText(replyToken, cteFunc.reply(text));
         }

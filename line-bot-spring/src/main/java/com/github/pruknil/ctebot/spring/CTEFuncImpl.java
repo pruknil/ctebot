@@ -34,6 +34,7 @@ public class CTEFuncImpl implements CTEFunc {
     private ResourceLoader resourceLoader;
 
     public String reply(String msg) {
+        msg = msg.toLowerCase();
         if ("#tdp".equalsIgnoreCase(msg)) {
             return tdp();
         }
@@ -45,17 +46,11 @@ public class CTEFuncImpl implements CTEFunc {
 
             return cost(resultList.get(1));
         }
-        if ("#lab".equalsIgnoreCase(msg)) {
-            return lab();
-        }
+
 
         return null;
     }
-
-    private String lab() {
-        return readFile("lab");
-    }
-
+    
     private String cost(String appid) {
         String val = readFile("cost_" + appid);
         if (val != null) {
