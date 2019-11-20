@@ -3,4 +3,3 @@ EDCM-Cashin LMS
 CTE2 : 27,386.24 THB
 CTE3 : 27,181.44 THB
 ======================
-Summary 54,567.68 THB

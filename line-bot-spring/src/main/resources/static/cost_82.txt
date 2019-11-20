@@ -3,4 +3,3 @@ Corona IO Reconcile
 CTE1 : 2,772.00 THB
 CTE2 : 5,032.00 THB
 ======================
-Summary 7,804.00 THB

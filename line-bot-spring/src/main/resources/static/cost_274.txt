@@ -3,4 +3,3 @@ ChequeMark
 CTE1 : 76,644.00 THB
 CTE2 : 110,532.00 THB
 ======================
-Summary 187,176.00 THB

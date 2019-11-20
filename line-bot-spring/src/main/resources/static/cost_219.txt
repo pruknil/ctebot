@@ -3,4 +3,3 @@ CBO-Cash on Web
 CTE1 : 9,612.00 THB
 CTE2 : 10,380.00 THB
 ======================
-Summary 19,992.00 THB

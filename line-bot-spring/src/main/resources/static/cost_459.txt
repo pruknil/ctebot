@@ -3,4 +3,3 @@ CH-Register
 CTE2 : 13,924.00 THB
 CTE3 : 12,704.00 THB
 ======================
-Summary 26,628.00 THB

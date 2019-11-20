@@ -3,4 +3,3 @@ CMAS Collections
 CTE1 : 14,800.00 THB
 CTE2 : 10,284.00 THB
 ======================
-Summary 25,084.00 THB

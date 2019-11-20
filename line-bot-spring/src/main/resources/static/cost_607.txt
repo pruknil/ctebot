@@ -3,4 +3,3 @@ Unit Dealing
 CTE1 : 33,200.00 THB
 CTE2 : 33,200.00 THB
 ======================
-Summary 66,400.00 THB
