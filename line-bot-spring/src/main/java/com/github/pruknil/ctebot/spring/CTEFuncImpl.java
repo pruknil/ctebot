@@ -46,11 +46,9 @@ public class CTEFuncImpl implements CTEFunc {
 
             return cost(resultList.get(1));
         }
-
-
         return null;
     }
-    
+
     private String cost(String appid) {
         String val = readFile("cost_" + appid);
         if (val != null) {
