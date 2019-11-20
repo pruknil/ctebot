@@ -270,9 +270,9 @@ public class CTEBotController {
             if (resultList.isEmpty() || resultList.size() > 2) {
                 this.replyText(replyToken, "Please specified 1,2,3");
             }
-            String fname = "lab_"+resultList.get(1).trim();
-            reply(event.getReplyToken(),
-                    new ImageMessage(createUri("/static/" + fname + ".jpg"), createUri("/static/" + fname + ".jpg")));
+            String fname = "lab_" + resultList.get(1).trim();
+            reply(event.getReplyToken(), new ImageMessage(createUri("/static/" + fname + ".jpg"),
+                    createUri("/static/" + fname + ".jpg")));
         } else {
             this.replyText(replyToken, cteFunc.reply(text));
         }
