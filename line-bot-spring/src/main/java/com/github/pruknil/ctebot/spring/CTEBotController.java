@@ -50,7 +50,6 @@ import com.linecorp.bot.model.event.MessageEvent;
 import com.linecorp.bot.model.event.PostbackEvent;
 import com.linecorp.bot.model.event.UnfollowEvent;
 import com.linecorp.bot.model.event.message.AudioMessageContent;
-import com.linecorp.bot.model.event.message.ContentProvider;
 import com.linecorp.bot.model.event.message.FileMessageContent;
 import com.linecorp.bot.model.event.message.ImageMessageContent;
 import com.linecorp.bot.model.event.message.LocationMessageContent;
@@ -58,13 +57,10 @@ import com.linecorp.bot.model.event.message.StickerMessageContent;
 import com.linecorp.bot.model.event.message.TextMessageContent;
 import com.linecorp.bot.model.event.message.VideoMessageContent;
 import com.linecorp.bot.model.event.source.Source;
-import com.linecorp.bot.model.message.AudioMessage;
 import com.linecorp.bot.model.message.ImageMessage;
 import com.linecorp.bot.model.message.LocationMessage;
 import com.linecorp.bot.model.message.Message;
-import com.linecorp.bot.model.message.StickerMessage;
 import com.linecorp.bot.model.message.TextMessage;
-import com.linecorp.bot.model.message.VideoMessage;
 import com.linecorp.bot.model.response.BotApiResponse;
 import com.linecorp.bot.spring.boot.annotation.EventMapping;
 import com.linecorp.bot.spring.boot.annotation.LineMessageHandler;
@@ -122,7 +118,7 @@ public class CTEBotController {
 
     @EventMapping
     public void handleAudioMessageEvent(MessageEvent<AudioMessageContent> event) throws IOException {
-        handleHeavyContent(event.getReplyToken(), event.getMessage().getId(), responseBody -> {
+        /*handleHeavyContent(event.getReplyToken(), event.getMessage().getId(), responseBody -> {
             final ContentProvider provider = event.getMessage().getContentProvider();
             final DownloadedContent mp4;
             if (provider.isExternal()) {
@@ -131,13 +127,13 @@ public class CTEBotController {
                 mp4 = saveContent("mp4", responseBody);
             }
             reply(event.getReplyToken(), new AudioMessage(mp4.getUri(), 100));
-        });
+        });*/
     }
 
     @EventMapping
     public void handleVideoMessageEvent(MessageEvent<VideoMessageContent> event) throws IOException {
         // You need to install ffmpeg and ImageMagick.
-        handleHeavyContent(event.getReplyToken(), event.getMessage().getId(), responseBody -> {
+        /*handleHeavyContent(event.getReplyToken(), event.getMessage().getId(), responseBody -> {
             final ContentProvider provider = event.getMessage().getContentProvider();
             final DownloadedContent mp4;
             final DownloadedContent previewImg;
@@ -150,7 +146,7 @@ public class CTEBotController {
                 system("convert", mp4.path + "[0]", previewImg.path.toString());
             }
             reply(event.getReplyToken(), new VideoMessage(mp4.getUri(), previewImg.uri));
-        });
+        });*/
     }
 
     @EventMapping
@@ -172,15 +168,15 @@ public class CTEBotController {
 
     @EventMapping
     public void handleJoinEvent(JoinEvent event) {
-        String replyToken = event.getReplyToken();
-        this.replyText(replyToken, "Joined " + event.getSource());
+        /*String replyToken = event.getReplyToken();
+        this.replyText(replyToken, "Joined " + event.getSource());*/
     }
 
     @EventMapping
     public void handlePostbackEvent(PostbackEvent event) {
-        String replyToken = event.getReplyToken();
+        /*String replyToken = event.getReplyToken();
         this.replyText(replyToken, "Got postback data " + event.getPostbackContent().getData() + ", param "
-                + event.getPostbackContent().getParams().toString());
+                + event.getPostbackContent().getParams().toString());*/
     }
 
     @EventMapping
@@ -191,9 +187,9 @@ public class CTEBotController {
 
     @EventMapping
     public void handleMemberJoined(MemberJoinedEvent event) {
-        String replyToken = event.getReplyToken();
-        this.replyText(replyToken, "Got memberJoined message " + event.getJoined().getMembers().stream()
-                .map(Source::getUserId).collect(Collectors.joining(",")));
+    //        String replyToken = event.getReplyToken();
+    //        this.replyText(replyToken, "Got memberJoined message " + event.getJoined().getMembers().stream()
+    //                .map(Source::getUserId).collect(Collectors.joining(",")));
     }
 
     @EventMapping
@@ -254,7 +250,7 @@ public class CTEBotController {
     }
 
     private void handleSticker(String replyToken, StickerMessageContent content) {
-        reply(replyToken, new StickerMessage(content.getPackageId(), content.getStickerId()));
+        //reply(replyToken, new StickerMessage(content.getPackageId(), content.getStickerId()));
     }
 
     private void handleTextContent(String replyToken, MessageEvent<TextMessageContent> event,
