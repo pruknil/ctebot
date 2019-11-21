@@ -63,12 +63,15 @@ public class CTEFuncImpl implements CTEFunc {
     private String tdp() {
         return readFile("tdp");
     }
+
     private String datacut() {
         return readFile("datacut");
     }
+
     private String ctedata() {
         return readFile("ctedata");
     }
+
     private String readFile(String filename) {
         try {
             Resource res = resourceLoader.getResource("url:" + createUri("/static/" + filename + ".txt"));
