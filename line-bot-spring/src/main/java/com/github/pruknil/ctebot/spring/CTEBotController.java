@@ -260,7 +260,7 @@ public class CTEBotController {
     private void handleTextContent(String replyToken, MessageEvent<TextMessageContent> event,
             TextMessageContent content) throws Exception {
         String text = content.getText();
-
+        text = text.toLowerCase();
         log.info("Got text message from replyToken:{}: text:{}", replyToken, text);
         if ("#batchplan".equalsIgnoreCase(text)) {
             reply(event.getReplyToken(),
