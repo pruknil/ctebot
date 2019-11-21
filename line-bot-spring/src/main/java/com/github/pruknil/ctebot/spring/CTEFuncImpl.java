@@ -37,8 +37,11 @@ public class CTEFuncImpl implements CTEFunc {
         msg = msg.toLowerCase();
         if ("#tdp".equalsIgnoreCase(msg)) {
             return tdp();
-        }
-        if (msg.startsWith("#cost")) {
+        } else if ("#datacut".equalsIgnoreCase(msg)) {
+            return datacut();
+        } else if ("#ctedata".equalsIgnoreCase(msg)) {
+            return ctedata();
+        } else if (msg.startsWith("#cost")) {
             List<String> resultList = Splitter.on(' ').trimResults().omitEmptyStrings().splitToList(msg);
             if (resultList.isEmpty() || resultList.size() > 2) {
                 return "Please specified valid appid";
@@ -60,7 +63,12 @@ public class CTEFuncImpl implements CTEFunc {
     private String tdp() {
         return readFile("tdp");
     }
-
+    private String datacut() {
+        return readFile("datacut");
+    }
+    private String ctedata() {
+        return readFile("ctedata");
+    }
     private String readFile(String filename) {
         try {
             Resource res = resourceLoader.getResource("url:" + createUri("/static/" + filename + ".txt"));
