@@ -57,7 +57,7 @@ public class CTEFuncImpl implements CTEFunc {
         if (val != null) {
             return val;
         }
-        return "invalid appid";
+        return "No Charge ja...";
     }
 
     private String tdp() {
